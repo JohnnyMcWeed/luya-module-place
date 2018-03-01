@@ -1,0 +1,27 @@
+{
+  "name": "johnnymcweed/luya-module-place",
+  "description": "The place module will provide you a basic place system.",
+  "type": "luya-module",
+  "minimum-stability": "stable",
+  "keywords": ["php", "yii", "yii2", "luya", "luya-module", "module", "place"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alexander Schmid",
+      "email": "alex.schmid@stud.unibas.ch"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/JohnnyMcWeed/luya-module-place/issues"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "johnnymcweed\\place\\" : "src/"
+    }
+  },
+  "require": {
+    "luyadev/luya-core": "~1.0.0"
+  },
+  "extra": {
+  }
+}
