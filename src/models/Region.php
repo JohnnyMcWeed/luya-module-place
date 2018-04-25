@@ -105,9 +105,9 @@ class Region extends NgRestModel
     public function ngRestAttributeGroups()
     {
         return [
-            [['code', 'country_id'], 'Info', 'collapsed'],
-            [['text', 'teaser_text'], 'Description'],
-            [['image_id'], 'Media', 'collapsed'],
+            [['text', 'teaser_text'], Module::t('Description')],
+            [['code', 'country_id'], Module::t('Info'), 'collapsed' => true],
+            [['image_id'], Module::t('Media'), 'collapsed' => true],
         ];
     }
 

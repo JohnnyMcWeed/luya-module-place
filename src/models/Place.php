@@ -120,9 +120,9 @@ class Place extends NgRestModel
     public function ngRestAttributeGroups()
     {
         return [
-            [['street', 'nr', 'city_id', 'lat', 'lng'], 'Info', 'collapsed'],
             [['text', 'teaser_text'], 'Description'],
-            [['image_id', 'image_list', 'file_list'], 'Media', 'collapsed'],
+            [['street', 'nr', 'city_id', 'lat', 'lng'], Module::t('Info'), 'collapsed' => true],
+            [['image_id', 'image_list', 'file_list'], Module::t('Media'), 'collapsed' => true],
         ];
     }
 
@@ -135,7 +135,7 @@ class Place extends NgRestModel
     {
         return [
             ['list', ['title', 'street', 'nr', 'city_id']],
-            [['create', 'update'], ['title', 'street', 'nr', 'city_id', 'lat', 'lng', 'teaser_text', 'image_id', 'image_list', 'file_list']],
+            [['create', 'update'], ['title', 'street', 'nr', 'city_id', 'lat', 'lng', 'text', 'teaser_text', 'image_id', 'image_list', 'file_list']],
             ['delete', false],
         ];
     }

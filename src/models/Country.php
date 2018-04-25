@@ -95,9 +95,9 @@ class Country extends NgRestModel
     public function ngRestAttributeGroups()
     {
         return [
-            [['iso2', 'iso3', 'continent_id'], 'Info', 'collapsed'],
-            [['text', 'teaser_text'], 'Description'],
-            [['image_id'], 'Media', 'collapsed'],
+            [['text', 'teaser_text'], Module::t('Description')],
+            [['iso2', 'iso3', 'continent_id'], Module::t('Info'), 'collapsed' => true],
+            [['image_id'], Module::t('Media'), 'collapsed' => true],
         ];
     }
 

@@ -105,9 +105,9 @@ class City extends NgRestModel
     public function ngRestAttributeGroups()
     {
         return [
-            [['zip', 'region_id'], 'Info', 'collapsed'],
-            [['text', 'teaser_text'], 'Description'],
-            [['image_id'], 'Media', 'collapsed'],
+            [['text', 'teaser_text'], Module::t('Description')],
+            [['zip', 'region_id'], Module::t('Info'), 'collapsed' => true],
+            [['image_id'], Module::t('Media'), 'collapsed' => true],
         ];
     }
 
