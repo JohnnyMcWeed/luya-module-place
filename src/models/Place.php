@@ -28,7 +28,7 @@ class Place extends NgRestModel
     /**
      * @inheritdoc
      */
-    public $i18n = ['title', 'text', 'teaser_text', 'image_list', 'file_list'];
+    public $i18n = ['title', 'text', 'teaser_text', 'slug', 'seo_title', 'seo_description', 'image_list', 'file_list'];
 
     /**
      * @inheritdoc
@@ -61,6 +61,9 @@ class Place extends NgRestModel
             'lng' => Module::t('Lng'),
             'text' => Module::t('Text'),
             'teaser_text' => Module::t('Teaser Text'),
+            'slug' => Module::t('Slug'),
+            'seo_title' => Module::t('Title'),
+            'seo_description' => Module::t('Description'),
             'image_id' => Module::t('Image'),
             'image_list' => Module::t('Image List'),
             'file_list' => Module::t('File List'),
@@ -75,7 +78,7 @@ class Place extends NgRestModel
         return [
             [['city_id'], 'integer'],
             [['lat', 'lng'], 'number'],
-            [['title', 'street', 'nr', 'text', 'teaser_text', 'image_list', 'file_list'], 'string'],
+            [['title', 'street', 'nr', 'text', 'teaser_text', 'slug', 'seo_title', 'seo_description', 'image_list', 'file_list'], 'string'],
             [['image_id'], 'safe'],
             [['city_id'], 'exist', 'skipOnError' => true, 'targetClass' => City::className(), 'targetAttribute' => ['city_id' => 'id']],
         ];
@@ -111,6 +114,9 @@ class Place extends NgRestModel
             'image_id' => 'image',
             'image_list' => 'imageArray',
             'file_list' => 'fileArray',
+            'slug' => 'slug',
+            'seo_title' => 'text',
+            'seo_description' => 'textarea',
         ];
     }
 
@@ -121,6 +127,7 @@ class Place extends NgRestModel
     {
         return [
             [['text', 'teaser_text'], 'Description'],
+            [['slug', 'seo_title', 'seo_description'], Module::t('SEO'), 'collapsed' => true],
             [['street', 'nr', 'city_id', 'lat', 'lng'], Module::t('Info'), 'collapsed' => true],
             [['image_id', 'image_list', 'file_list'], Module::t('Media'), 'collapsed' => true],
         ];
@@ -135,7 +142,7 @@ class Place extends NgRestModel
     {
         return [
             ['list', ['title', 'street', 'nr', 'city_id']],
-            [['create', 'update'], ['title', 'street', 'nr', 'city_id', 'lat', 'lng', 'text', 'teaser_text', 'image_id', 'image_list', 'file_list']],
+            [['create', 'update'], ['title', 'street', 'nr', 'city_id', 'lat', 'lng', 'text', 'teaser_text', 'slug', 'seo_title', 'seo_description', 'image_id', 'image_list', 'file_list']],
             ['delete', false],
         ];
     }

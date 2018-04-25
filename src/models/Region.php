@@ -24,7 +24,7 @@ class Region extends NgRestModel
     /**
      * @inheritdoc
      */
-    public $i18n = ['title', 'code', 'text', 'teaser_text'];
+    public $i18n = ['title', 'code', 'text', 'teaser_text', 'slug', 'seo_title', 'seo_description'];
 
     /**
      * @inheritdoc
@@ -54,6 +54,9 @@ class Region extends NgRestModel
             'code' => Module::t('Code'),
             'text' => Module::t('Text'),
             'teaser_text' => Module::t('Teaser Text'),
+            'slug' => Module::t('Slug'),
+            'seo_title' => Module::t('Title'),
+            'seo_description' => Module::t('Description'),
             'image_id' => Module::t('Image'),
         ];
     }
@@ -65,7 +68,7 @@ class Region extends NgRestModel
     {
         return [
             [['country_id'], 'integer'],
-            [['title', 'code', 'text', 'teaser_text'], 'string'],
+            [['title', 'code', 'text', 'teaser_text', 'slug', 'seo_title', 'seo_description',], 'string'],
             [['image_id'], 'safe'],
             [['country_id'], 'exist', 'skipOnError' => true, 'targetClass' => Country::className(), 'targetAttribute' => ['country_id' => 'id']],
         ];
@@ -96,6 +99,9 @@ class Region extends NgRestModel
             'text' => 'textarea',
             'teaser_text' => 'textarea',
             'image_id' => 'image',
+            'slug' => 'slug',
+            'seo_title' => 'text',
+            'seo_description' => 'textarea',
         ];
     }
 
@@ -106,6 +112,7 @@ class Region extends NgRestModel
     {
         return [
             [['text', 'teaser_text'], Module::t('Description')],
+            [['slug', 'seo_title', 'seo_description'], Module::t('SEO'), 'collapsed' => true],
             [['code', 'country_id'], Module::t('Info'), 'collapsed' => true],
             [['image_id'], Module::t('Media'), 'collapsed' => true],
         ];
@@ -120,7 +127,7 @@ class Region extends NgRestModel
     {
         return [
             ['list', ['title', 'code', 'country_id']],
-            [['create', 'update'], ['title', 'code', 'country_id', 'text', 'teaser_text', 'image_id']],
+            [['create', 'update'], ['title', 'code', 'country_id', 'text', 'teaser_text', 'slug', 'seo_title', 'seo_description', 'image_id']],
             ['delete', false],
         ];
     }
